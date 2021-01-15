@@ -8,14 +8,14 @@ app.cache = Cache(app)
 
 climaCtrl = ClimaCtrl()
 
-@app.route("/")
+@app.route('/posicao/<lat>/<lon>', methods=['GET'])
 @app.cache.cached(timeout=300)
-def por_latitude_longitude():
-    return climaCtrl.por_latitude_longitude(123,321)
+def por_latitude_longitude(lat, lon):
+    return climaCtrl.por_latitude_longitude(lat, lon)
 
-@app.route("/cidade")
+@app.route('/cidade/<cidade>/<pais>', methods=['GET'])
 @app.cache.cached(timeout=300)
-def por_cidade():
-    return climaCtrl.por_cidade('penapolis')
+def por_cidade(cidade, pais):
+    return climaCtrl.por_cidade(cidade, pais)
 
 app.run(port=5000, debug=True, host='0.0.0.0')
