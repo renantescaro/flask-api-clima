@@ -7,6 +7,4 @@ class Api:
         self._url = url
 
     def get(self, parametros):
-        r = requests.get(url=self._url, params=parametros)
-        r.headers["Content-Type"] = "application/json"
-        return r.text
+        return requests.get(url=self._url, params=parametros)
