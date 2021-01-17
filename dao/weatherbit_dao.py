@@ -5,7 +5,7 @@ class WeatherbitDao:
 
     def __init__(self):
         self.url_api = 'http://api.weatherbit.io/v2.0/current'
-        self.caminho_imagens = '/assets/imagens/'
+        self.caminho_imagens = '/img/'
         self.extensao_imagem = '.png'
         self._key = '7b6aa93b6f924b51ba2860da2e0142a1'
         self._api = Api(self.url_api)
