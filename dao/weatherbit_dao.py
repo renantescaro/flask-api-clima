@@ -7,8 +7,8 @@ class WeatherbitDao:
         self.url_api = 'http://api.weatherbit.io/v2.0/current'
         self.caminho_imagens = '/assets/imagens/'
         self.extensao_imagem = '.png'
-        self._key    = '7b6aa93b6f924b51ba2860da2e0142a1'
-        self._api    = Api(self.url_api)
+        self._key = '7b6aa93b6f924b51ba2860da2e0142a1'
+        self._api = Api(self.url_api)
         self._json_final = {}
 
     def por_latitude_longitude(self, latitude, longitude):
