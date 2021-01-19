@@ -1,4 +1,5 @@
 from dao.api import Api
+from entities.converter import Converter
 import json
 
 class WeatherbitDao:
@@ -22,25 +23,25 @@ class WeatherbitDao:
         return self._json_final
 
     def setar_dados(self):
+        converter = Converter()
         response_json = self._response.json()
         self._json_final = {
             "endereco"   : self.obter_endereco(),
-            "data"       : response_json['data'][0]['ob_time'],
+            "data"       : converter.data_atual_string(),
             "urlImagem"  : self.obter_url_imagem(),
             "temperatura": response_json['data'][0]['temp'],
-            "chuva"      : response_json['data'][0]['precip'],
+            "clima"      : response_json['data'][0]['weather']['description'],
             "umidade"    : response_json['data'][0]['rh'],
-            "vento"      : response_json['data'][0]['wind_spd']
+            "vento"      : converter.ms_para_kh(response_json['data'][0]['wind_spd'])
         }
 
     def obter_endereco(self):
         response_json = self._response.json()
         return (str(response_json['data'][0]['city_name']) +
-                str(response_json['data'][0]['state_code']) +
+                ' / ' +
                 str(response_json['data'][0]['country_code']))
 
     def obter_url_imagem(self):
         response_json = self._response.json()
         nome_imagem   = response_json['data'][0]['weather']['icon']
         return (str(self.caminho_imagens) + str(nome_imagem) + str(self.extensao_imagem))
-    
