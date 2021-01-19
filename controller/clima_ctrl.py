@@ -1,5 +1,4 @@
 from dao.weatherbit_dao import WeatherbitDao
-from entities.weatherbit import Weatherbit
 
 class ClimaCtrl:
     api_clima = WeatherbitDao()
