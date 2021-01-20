@@ -31,8 +31,8 @@ class WeatherbitDao:
             "urlImagem"  : self.obter_url_imagem(),
             "temperatura": response_json['data'][0]['temp'],
             "clima"      : response_json['data'][0]['weather']['description'],
-            "umidade"    : response_json['data'][0]['rh'],
-            "vento"      : converter.ms_para_kh(response_json['data'][0]['wind_spd'])
+            "umidade"    : round(response_json['data'][0]['rh'],2),
+            "vento"      : round( converter.ms_para_kh(response_json['data'][0]['wind_spd']),2)
         }
 
     def obter_endereco(self):
