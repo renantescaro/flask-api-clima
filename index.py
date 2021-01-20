@@ -21,7 +21,7 @@ def por_latitude_longitude(lat, lon):
 def por_cidade(cidade, pais):
     return jsonify(climaCtrl.por_cidade(cidade, pais))
 
-#@app.cache.cached(timeout=300)
+@app.cache.cached(timeout=300)
 @app.route('/img/<imagem>', methods=['GET'])
 def imagem(imagem):
     return send_file('static/images/'+str(imagem), mimetype='image/PNG')
